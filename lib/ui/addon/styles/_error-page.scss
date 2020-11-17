@@ -1,0 +1,53 @@
+/**
+  ERROR-PAGE
+  ===========
+  An error with possible reasons and solutions.
+  For example: when application is not detected.
+*/
+
+.error-page__content {
+  border: 1px solid var(--base04);
+  width: 530px;
+
+  ul {
+    list-style-type: disc;
+    padding-left: var(--unit4);
+  }
+  
+  li {
+    padding: 2px 0;
+  }
+
+  a {
+    color: var(--spec01);
+    text-decoration: none;
+  }
+}
+
+.error-page__header {
+  border-bottom: 1px solid var(--base04);
+  top: -25px;
+
+  .tomster {
+    transform: translateY(90px);
+    flex-shrink: 0;
+    height: 89px;
+    width: 128px;
+    animation: tomsterReveal 0.4s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+    animation-delay: 0.75s;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes tomsterReveal {
+  from {
+    transform: translateY(90px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+
+.error-page__body {
+  border-bottom: 1px solid var(--base04);
+}

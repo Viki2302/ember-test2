@@ -1,0 +1,23 @@
+node_modules/
+tmp/
+.DS_Store
+*.swp
+
+dist/**/*.zip
+dist/testing
+
+dist_prev
+
+*.xpi
+
+.mozilla-addon-sdk
+
+aws.json
+config/secrets.json
+
+# ember-try
+.node_modules.ember-try/
+bower.json.ember-try
+package.json.ember-try
+
+.idea/

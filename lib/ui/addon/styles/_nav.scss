@@ -1,0 +1,152 @@
+$nav--main-item-height: 38px;
+
+.nav__title {
+  color: var(--base09);
+  cursor: default;
+  font-size: 1.2rem;
+  height: 22px;
+  line-height: 22px;
+  margin: 2px 0 0;
+  overflow: hidden;
+  padding: 0 var(--unit1);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+/**
+  Nav Item
+  ===========
+  Anchor tag
+*/
+
+.nav__item {
+  align-items: center;
+  color: var(--base15);
+  cursor: default;
+  display: flex;
+  height: 24px;
+  line-height: 24px;
+  overflow: hidden;
+  padding: 0 var(--unit1);
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  &:focus { outline: none; }
+}
+
+.nav__item.active {
+  background: var(--focus);
+  color: var(--focus-text);
+}
+
+.app.inactive .nav__item.active {
+  background: var(--base06);
+}
+
+/**
+  Nav Item Label
+  ===========
+  Main text of Nav Item
+*/
+
+.nav__item-label {
+  flex-grow: 1;
+  font-size: 1.3rem;
+}
+
+.nav--collapsed .nav__item-label,
+.nav--collapsed .nav__item .pill {
+  display: none;
+}
+
+.nav__item-icon {
+  flex-shrink: 0;
+  height: 22px;
+  margin-right: 7px;
+  width: 22px;
+}
+
+.nav__icon-stroke {
+  fill: var(--base12);
+}
+
+.nav__item.active .nav__icon-stroke {
+  fill: var(--focus-text);
+}
+
+/* Custom navs */
+
+.nav--main .nav__item {
+  height: $nav--main-item-height;
+  line-height: $nav--main-item-height;
+  padding-left: 12px;
+}
+
+.nav--main .pill {
+  margin-right: var(--unit1);
+  margin-left: var(--unit1);
+}
+
+.nav.nav--main .nav__title {
+  padding-left: 14px;
+}
+
+/* Flip path on Promises icon */
+
+.promises-icon-circle {
+  transform: scaleX(-1);
+  transform-origin: 18px;
+}
+
+.navigation-submit-issue {
+  grid-area: left;
+}
+
+.navigation-toggle {
+  grid-area: right;
+
+  .svg-stroke {
+    stroke: var(--base12);
+  }
+
+  .svg-fill {
+    fill: var(--base12);
+  }
+}
+
+// when nav is expaned, layout horizontally
+.nav__footer.nav--expanded {
+  display: grid;
+  grid-template: "left center right" $nav--main-item-height / auto 1fr auto;
+  height: $nav--main-item-height;
+}
+
+// when nav is collapsed, layout vertically
+.nav__footer.nav--collapsed {
+  display: grid;
+  grid-template:
+    "left" $nav--main-item-height - 6px
+    "right" $nav--main-item-height  - 6px;
+  height: auto;
+}
+
+.nav__overflow.nav__overflow--active {
+  background-color: var(--focus);
+
+  .nav__icon-stroke {
+    fill: var(--focus-text);
+  }
+}
+
+// force select to cover clickable area
+.nav__overflow select {
+  height: $nav--main-item-height;
+}

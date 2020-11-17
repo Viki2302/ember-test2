@@ -1,0 +1,31 @@
+<EmberTable as |t|>
+  <t.head
+    @columns={{this.columns}}
+    @sorts={{this.sorts}}
+    @onUpdateSorts={{this.updateSorts}}
+  as |h|
+  >
+    <h.row as |r|>
+      <r.cell data-test-table-header-column />
+    </h.row>
+  </t.head>
+  <t.body
+    @rows={{this.filteredRecords}}
+    @checkboxSelectionMode="none"
+    @selection={{this.selection}}
+    @onSelect={{this.inspectModel}}
+  as |b|
+  >
+    <b.row
+      class={{if (mod b.rowMeta.index 2) "striped"}}
+      data-test-table-row
+    as |r|
+    >
+      <r.cell data-test-table-cell as |value column row|>
+        <span class={{row.color}}>
+          {{value}}
+        </span>
+      </r.cell>
+    </b.row>
+  </t.body>
+</EmberTable>

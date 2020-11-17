@@ -1,0 +1,10 @@
+<div class="toolbar">
+  <Ui::ToolbarReloadButton
+    @action={{action send "reload"}}
+    data-test-reload-container-btn
+  />
+
+  <Ui::ToolbarDivider />
+
+  <Ui::SendToConsole @action={{this.sendContainerToConsole}} />
+</div>

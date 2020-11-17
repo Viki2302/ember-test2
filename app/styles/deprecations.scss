@@ -1,0 +1,15 @@
+.deprecation-item {
+  border-bottom: 1px solid var(--base01);
+
+  .send-to-console {
+    font-size: inherit;
+  }
+
+  .external-link path {
+    fill: var(--base14);
+  }
+}
+
+.deprecation-source {
+  padding-left: 70px;
+}

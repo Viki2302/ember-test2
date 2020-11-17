@@ -1,0 +1,69 @@
+<div class="toolbar">
+  <Ui::ToolbarClearButton
+    @action={{this.clear}}
+    class="js-clear-promises-btn"
+  />
+
+  {{! if should refresh the refresh button will be in the middle of the of the tab }}
+  {{#unless shouldRefresh}}
+    <Ui::ToolbarDivider />
+    <Ui::ToolbarReloadButton
+      @action={{action send "refreshPage"}}
+      class="js-toolbar-page-refresh-btn"
+    />
+  {{/unless}}
+
+  <Ui::ToolbarDivider />
+
+  <Ui::ToolbarSearchField
+    @value={{this.searchValue}}
+    class="js-promise-search"
+  />
+
+  <Ui::ToolbarDivider />
+
+  <button
+    class="{{if (eq this.filter "all") "active"}} toolbar__radio toolbar__radio--first js-filter"
+    {{on "click" (fn this.setFilter "all")}}
+    type="button"
+  >
+    All
+  </button>
+
+  <button
+    class="{{if (eq this.filter "rejected") "active"}} toolbar__radio js-filter"
+    {{on "click" (fn this.setFilter "rejected")}}
+    type="button"
+  >
+    Rejected
+  </button>
+  <button
+    class="{{if (eq this.filter "pending") "active"}} toolbar__radio js-filter"
+    {{on "click" (fn this.setFilter "pending")}}
+    type="button"
+  >
+    Pending
+  </button>
+  <button
+    class="{{if (eq this.filter "fulfilled") "active"}} toolbar__radio toolbar__radio--last js-filter"
+    {{on "click" (fn this.setFilter "fullfilled")}}
+    type="button"
+  >
+    Fulfilled
+  </button>
+
+  <Ui::ToolbarDivider />
+
+  <div class="toolbar__checkbox js-with-stack">
+    <label for="instrument-with-stack">
+      <Input
+        @type="checkbox"
+        @checked={{this.instrumentWithStack}}
+        @id="instrument-with-stack"
+        @change={{fn this.updateInstrumentWithStack (not this.instrumentWithStack)}}
+      />
+      Trace promises
+    </label>
+
+  </div>
+</div>

@@ -1,0 +1,13 @@
+{
+  "name": "ui",
+  "keywords": [
+    "ember-addon"
+  ],
+  "dependencies": {
+    "ember-cli-babel": "*",
+    "ember-cli-htmlbars": "*",
+    "ember-cli-sass": "*",
+    "ember-cli-version-checker": "*",
+    "ember-svg-jar": "*"
+  }
+}

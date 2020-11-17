@@ -1,0 +1,30 @@
+<div class="toolbar">
+  <div class="toolbar__checkbox js-filter-hide-routes">
+    <label for="options-hideRoutes">
+      <Input
+        @id="options-hideRoutes"
+        @type="checkbox"
+        @checked={{this.options.hideRoutes}}
+      />
+      Current Route only
+    </label>
+  </div>
+
+  <div class="toolbar__checkbox js-filter-hide-substates">
+    <label for="options-hideSubstates" title="Hide loading and error substates">
+      <Input
+        @id="options-hideSubstates"
+        @type="checkbox"
+        @checked={{this.options.hideSubstates}}
+      />
+      Hide Substates
+    </label>
+  </div>
+
+  <Ui::ToolbarDivider />
+
+  <Ui::ToolbarSearchField
+    @value={{this.searchValue}}
+    data-test-filter-views
+  />
+</div>

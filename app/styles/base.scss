@@ -1,0 +1,66 @@
+:root {
+  /* stylelint-disable value-keyword-case */
+  --font-sans-serif: "Inter", -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Cantarell', 'Oxygen', 'Ubuntu', 'Helvetica Neue', helvetica, arial, sans-serif;
+  --font-monospace: 'SF Mono', Menlo, Monaco, monospace;
+  /* stylelint-enable value-keyword-case */
+  --inherit: inherit;
+  --unit0: 0;
+  --unit1: 4px;
+  --unit2: calc(var(--unit1) * 2);
+  --unit3: calc(var(--unit1) * 3);
+  --unit4: calc(var(--unit1) * 4);
+  --unit5: calc(var(--unit1) * 5);
+  --unit6: calc(var(--unit1) * 6);
+  --unit7: calc(var(--unit1) * 7);
+  --unit8: calc(var(--unit1) * 8);
+  --unit9: calc(var(--unit1) * 9);
+  --unit10: calc(var(--unit1) * 10);
+  --unit11: calc(var(--unit1) * 11);
+  --unit12: calc(var(--unit1) * 12);
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.2rem;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body,
+input {
+  color: var(--base14);
+  font-family: var(--font-sans-serif);
+}
+
+body,
+div,
+nav {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 1.2rem;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: var(--inherit);
+}
+
+code {
+  font-family: var(--font-monospace);
+}

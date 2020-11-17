@@ -1,0 +1,9 @@
+.empty-message {
+  svg path {
+    fill: var(--base07);
+  }
+}
+
+.empty-message__content {
+  max-width: 40rem;
+}

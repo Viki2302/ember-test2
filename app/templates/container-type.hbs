@@ -1,0 +1,34 @@
+<EmberTable as |t|>
+  <t.head
+    @columns={{this.columns}}
+    @sorts={{this.sorts}}
+    @onUpdateSorts={{this.updateSorts}}
+    @enableReorder={{false}}
+  />
+  <t.body
+    @rows={{this.rows}}
+  as |b|
+  >
+    <b.row
+      class={{if (mod b.rowMeta.index 2) "striped"}}
+      data-test-instance-row
+    as |r|
+    >
+      <r.cell as |name column instance|>
+        {{#if instance.inspectable}}
+          <div
+            class="is-link"
+            data-test-instance={{name}}
+            {{on "click" (fn this.inspectInstance instance)}}
+          >
+            {{instance.name}}
+          </div>
+        {{else}}
+          <span data-test-instance={{name}}>
+            {{instance.name}}
+          </span>
+        {{/if}}
+      </r.cell>
+    </b.row>
+  </t.body>
+</EmberTable>

@@ -1,0 +1,100 @@
+<div
+  class="ember-view app absolute inset-0 z-0 {{if this.active "" "inactive"}}"
+  tabindex="1"
+  {{on "focusin" (fn this.setActive true)}}
+  {{on "focusout" (fn this.setActive false)}}
+  {{did-resize this.windowDidResize debounce=250}}
+>
+  {{#if this.isEmberApplication}}
+    <div class="split">
+      <div class="split__panel">
+        <div class="split split--main">
+          <Ui::DraggableColumn
+            @classes="split__panel split__panel--sidebar-1"
+            @side="left"
+            @width={{this.navWidth}}
+          >
+            <div class="split__panel__hd">
+              <AppPicker @collapsed={{this.navIsCollapsed}} />
+            </div>
+
+            <SideNav
+              class="split__panel__bd"
+              @collapsed={{this.navIsCollapsed}}
+              @deprecationCount={{this.deprecationCount}}
+            />
+
+            <div class="split__panel__ft nav__footer {{if this.navIsCollapsed "nav--collapsed" "nav--expanded"}}">
+              <a
+                target="_blank"
+                title="Submit an Issue"
+                class="navigation-submit-issue flex items-center justify-center px-3"
+                href="https://github.com/emberjs/ember-inspector/issues"
+              >
+                {{svg-jar "nav-bug" width="18" height="18"}}
+              </a>
+              <button
+                {{on "click" this.toggleNavCollapsed}}
+                title="{{if this.navIsCollapsed "expand" "collapse"}} navigation"
+                type="button"
+                class="navigation-toggle flex items-center bg-transparent border-0 outline-none appearance-none px-3"
+              >
+                {{svg-jar "sidebar-toggle" width="16" height="16"}}
+              </button>
+            </div>
+          </Ui::DraggableColumn>
+
+          <div class="split__panel">
+            <div class="split__panel__hd">
+              {{outlet "toolbar"}}
+              <button
+                class="object-inspector-toggle toolbar__icon-button absolute top-0 right-0"
+                {{on "click" this.toggleInspector}}
+                type="button"
+                title="{{if this.inspectorExpanded "hide" "show"}} object inspector"
+              >
+                {{svg-jar "sidebar-toggle" width="16" height="16"}}
+              </button>
+            </div>
+
+            <div class="split__panel__bd" {{did-insert this.setupContentElement}}>
+              {{outlet}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {{#if this.inspectorExpanded}}
+        <Ui::DraggableColumn
+          @classes="split__panel"
+          @side="right"
+          @width={{this.inspectorWidth}}
+        >
+          <ObjectInspector
+            @popMixinDetails={{this.popMixinDetails}}
+            @model={{this.mixinStack}}
+            @mixinDetails={{this.mixinDetails}}
+          />
+        </Ui::DraggableColumn>
+      {{/if}}
+    </div>
+  {{else}}
+    <Ui::ErrorPage @description="Ember application not detected!">
+      <ul>
+        <li>This is not an Ember application.</li>
+        <li>You are using an old version of Ember (&lt; rc5).</li>
+        {{#if this.isChrome}}
+          <li>
+            You are using the file:// protocol (instead of http://), in which case:
+
+            <ul>
+              <li>Visit the URL: chrome://extensions.</li>
+              <li>Find the Ember Inspector.</li>
+              <li>Make sure "Allow access to file URLs" is checked.</li>
+            </ul>
+          </li>
+        {{/if}}
+      </ul>
+    </Ui::ErrorPage>
+  {{/if}}
+</div>

@@ -1,0 +1,49 @@
+/**
+ DRAG-HANDLE
+ ===========
+ The drag handle used for resizing elements
+*/
+
+:root {
+  --drag-handle-width: 6px;
+  --drag-handle-active-width: 60px;
+}
+
+.drag-handle {
+  width: var(--drag-handle-width);
+  z-index: 500;
+}
+
+.drag-handle--right {
+  margin-right: calc(var(--drag-handle-width) / 2 * -1);
+}
+
+.drag-handle--left {
+  margin-left: calc(var(--drag-handle-width) / 2 * -1);
+}
+
+.drag-handle__border {
+  border-left: 1px solid var(--base06);
+  margin-left: calc(var(--drag-handle-width) / 2);
+  width: 1px;
+}
+
+.drag-handle:active {
+  width: var(--drag-handle-active-width);
+
+  &.drag-handle--right {
+    margin-right: calc(var(--drag-handle-active-width) / 2 * -1);
+  }
+
+  &.drag-handle--left {
+    margin-left: calc(var(--drag-handle-active-width) / 2 * -1);
+  }
+
+  .drag-handle__border {
+    margin-left: calc(var(--drag-handle-active-width) / 2);
+  }
+}
+
+.drag-handle--faded {
+  opacity: 0.3;
+}

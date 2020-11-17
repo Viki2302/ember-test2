@@ -1,0 +1,8 @@
+<ItemTypes
+  @header="Model Types"
+  @sorted={{readonly (if this.orderByRecordCount this.sortByDescCount this.sortByName)}}
+  @type="model"
+  @width={{this.navWidth}}
+>
+  {{outlet}}
+</ItemTypes>
